@@ -2,8 +2,6 @@
 include "../db/atadmin.php";
 include "../qr/qr.php";
 
-
-
 if (isset ($_GET["p"])) {
 	$ModID = trim(htmlentities($_GET['p']));
 }
@@ -46,19 +44,6 @@ $qrImageFile = $timestamp . DIRECTORY_SEPARATOR . $timestamp . ".png";
 echo '<img src="'. $qrImageFile . '"/>';
 
 //$qr->distroyqr($timestamp);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ?>
