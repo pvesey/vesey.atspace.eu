@@ -2,6 +2,7 @@ console.log("Running up JavaScript");
 window.onload = initAll;
 var ajaxMyCourse = false;
 var ajaxMyAttend = false;
+var ajaxShowQR = false;
 var dataArray = new Array();
 var url = 'lib/courses.php';
 var MyCourseurl = 'mycourses.php';
@@ -15,6 +16,7 @@ function initAll() {
 	if (window.XMLHttpRequest) {
 		//xhr = new XMLHttpRequest();
 		ajaxMyAttend = new XMLHttpRequest();
+		ajaxShowQR = new  XMLHttpRequest();
 	}
 	else {
 		if (window.ActiveXObject) {
@@ -29,7 +31,13 @@ function initAll() {
 		ajaxMyAttend.onreadystatechange = showMyAttend;
 	}
 	
-
+	if (ajaxShowQR) {
+		ajaxShowQR.onreadystatechange = showQRCode;
+	}
+	
+	
+	
+	
 	
 	else {
 		alert("Sorry, but I couldn't create an XMLHttpRequest for XML");
@@ -48,37 +56,38 @@ function getCourseInfo(obj){
 	
 }
 
-function runClicked(obj) {
+//function runClicked(obj) {
 
-	objText = obj.innerHTML;
-	xmlCourse.open("GET","courses.php?q="+ objText,true);
-	xmlCourse.send();
+//	objText = obj.innerHTML;
+//	xmlCourse.open("GET","courses.php?q="+ objText,true);
+//	xmlCourse.send();
 
-}
+//}
 
-function courseClicked(obj) {
+//function courseClicked(obj) {
 
-	objText = obj.innerHTML;
-	console.log(obj.innerHTML);
-}
+//	objText = obj.innerHTML;
+//	console.log(obj.innerHTML);
+//}
 
 
 
 
 function showMyAttend() {
 	document.getElementById("mainContent").innerHTML = "<img class='ajaxLoader' src='img/icon/loaderB64.gif'>";
-	
+	var outXML = "";
+	var outHTML = "";
 	if (ajaxMyAttend.readyState == 4) {
 		if (ajaxMyAttend.status == 200) {
-		var outXML = ajaxMyAttend.responseXML;
-		console.log("XML BACK");
+			outXML = ajaxMyAttend.responseXML;
+			console.log("XML BACK");
 			if (!outXML){
 				console.log("Nothing Returned in XML");
 			}
 			
 		}
 		else {
-			var outHTML = "There was a problem with the request " + ajaxMyAttend.status;
+			outHTML = "There was a problem with the request " + ajaxMyAttend.status;
 		}
 		
 		if (outXML.documentElement.nodeName == "Module"){
@@ -218,34 +227,66 @@ function createQRCode(courseID){
 	console.log(courseID);
 	
 	var date = new Date();
+
+	var month = String(date.getMonth() +1);
+	if (month.length == 1){
+		month = '0' + month;
+	}
 	
+	var day = String(date.getDate());
+	if (day.length == 1){
+		day = '0' + day;
+	}
 	
-	date.getDate();
-	date.getDay();
-	date.getFullYear();
-	date.getHours();
-	date.getUTCDate();
+	var startHour = String(date.getHours());
+	var endHour = String(date.getHours() + 1);
 	
+	var classStart = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ startHour + ':00:00"';
+	var classFinish = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ endHour + ':00:00"';
 	
-// '2012-11-22 10:08:00'	
-	
-	var classStart = "'" + date.getFullYear() + "-" +date.getMonth()+ "-"+ date.getDay() + " "+ date.getHours()+ ":00:00'";
-	
-	outHTML = "<h1>CONTENT CLEARED</h1>";
+	outHTML = "<h1>Content Cleared</h1>";
 	
 	document.getElementById("mainContent").innerHTML = outHTML;
 	
-	cTime = date.toGMTString();
+	var QRrun = "lib/showQR.php?p=" + currentCourse +  "&q=" + classStart + "&r=" + classFinish;
 	
-	console.log(cTime);
-	console.log(date.getDate());	
-	console.log(date.getDay());	
-	console.log(date.getFullYear());
-	console.log(classStart);
+	console.log(QRrun);
+//	currentCourse = obj;
+	//objText = obj.innerHTML;
+	ajaxShowQR.open("GET",QRrun,true);
+	ajaxShowQR.send();
+	
 	
 	
 	
 }
+
+
+function showQRCode() {
+	document.getElementById("mainContent").innerHTML = "<img class='ajaxLoader' src='img/icon/loaderB64.gif'>";
+	var outXML = "";
+	var outHTML = "";
+	if (ajaxShowQR.readyState == 4) {
+		if (ajaxShowQR.status == 200) {
+			outXML = ajaxShowQR.responseText;
+			console.log("TEXT BACK");
+			if (!outXML){
+				console.log("Nothing Returned in TXT");
+			}
+			
+		}
+		else {
+			outHTML = "There was a problem with the request " + ajaxShowQR.status;
+		}
+		
+		outHTML = outXML;
+				
+		document.getElementById("mainContent").innerHTML = outHTML;
+		
+	}
+}
+
+
 
 
 

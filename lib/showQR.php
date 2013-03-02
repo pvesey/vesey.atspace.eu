@@ -1,13 +1,7 @@
 <?php
-include "db/atadmin.php";
-include "qr/qr.php";
 
-//$classStart = '2013-01-02 10:00:00';
-//$classEnd = '2013-01-02 12:00:00';
-
-// will have to get the mod id from the call
-
-//$ModID = 2;
+include "../db/atadmin.php";
+include "../qr/qr.php";
 
 if (isset ($_GET["q"])) {
 	$ModID = trim(htmlentities($_GET['q']));
@@ -20,15 +14,6 @@ if (isset ($_GET["r"])) {
 if (isset ($_GET["s"])) {
 	$classEnd = trim(htmlentities($_GET['s']));
 }
-
-
-/// THINGS TO PASS IN
-//	Module ID
-//  Class Start Time
-//  Class END TIME
-//
-//
-
 
 
 $timestamp = md5(time());
@@ -49,5 +34,19 @@ $classID = $db->getClassID($timestamp);
 $qr->makeQRCode($timestamp);
 
 //$qr->distroyqr($timestamp);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
