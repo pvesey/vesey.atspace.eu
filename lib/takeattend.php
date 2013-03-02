@@ -27,7 +27,6 @@ $password = $dbatt->getPassword();
 
 $dbatt->logAttend($class, $username, $password)
 
-
 ?>
 
 
