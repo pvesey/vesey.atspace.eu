@@ -3,9 +3,6 @@
 include "qrlib.php";
 
 
-
-
-
 class qr{
 
   private $_cssStyle = "";
@@ -15,6 +12,7 @@ class qr{
   private $_qrImageFile ="";
   private $_libDir = "http://localhost/vesey.atspace.eu/lib/";
   private $_styleDir = "http://localhost/vesey.atspace.eu/style/";
+  private $_sitePath = "http://localhost/vesey.atspace.eu/";
 
  
   
@@ -35,12 +33,26 @@ class qr{
   	$errorCorrectionLevel = 'H';
   	$matrixPointSize = 10;
 
+  	 
+  	/// NEED TO LOOK AT DIRECTORYS AGAIN...
+  	
+  	
+  	
+  	
   	$dirName = $md5;
-  	$this->_dirName = $dirName;
+  	$this->_dirName = $this->_sitePath . $md5;
+
+  	echo $dirName . "<br>";
+  	echo $this->_dirName . "<br>";
+  	 
+  	
+  	
+  	mkdir($dirName);
+  	
   	//$tempURL = 'http://vesey.atspace.eu/CMI'.$timestamp.'/';
-  	$tempURL = 'http://localhost/CMI/'.$md5.'/';
+  	$tempURL = 'http://localhost/vesey.atspace.eu/'.$md5.'/';
   
-  	$CMITempDir = getcwd().DIRECTORY_SEPARATOR.$dirName.DIRECTORY_SEPARATOR;
+  	$CMITempDir = $this->_dirName;
   	
     $this->_qrImageFile = $CMITempDir.$md5.'.png';
     $filename = $md5.DIRECTORY_SEPARATOR.$md5.'.png';
@@ -54,18 +66,19 @@ class qr{
   	$CSSFile = $this->_styleDir."qrstyle.css";
   	$this->_cssStyle = $CMITempDir."qrstyle.css";
   
-  	mkdir($dirName);
+
   
   	QRcode::png($tempURL, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
- 	
+ 	echo $filename;
   	copy($InputFile, $this->_InputTempFile);  // copy the php/html form
   	copy($SQLInsertFile, $this->_SQLTempInsert); //php script to put data into database
   	copy($CSSFile, $this->_cssStyle);  //CSS style file.  (MAY BE A WORKAROUND HERE)
+
+  	echo '<img src="'. $filename . '" /><hr/>';
+  
   }
   
-  
-  
-  
+
   
 }
 ?>

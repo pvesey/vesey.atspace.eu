@@ -29,10 +29,6 @@ $db = new atadmin();
 $qr = new qr();
 
 // create the class on the database
-echo $ModID . "<br>";
-echo $classStart . "<br>";
-echo $classEnd;
-
 
 //$db->createClass($ModID, $classStart, $classEnd, $timestamp);
 
@@ -44,6 +40,8 @@ echo $classEnd;
 // create the QR code that will match the systems...
 
 $qr->makeQRCode($timestamp);
+
+
 
 //$qr->distroyqr($timestamp);
 
