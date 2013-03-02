@@ -30,18 +30,20 @@ $qr = new qr();
 
 // create the class on the database
 
-//$db->createClass($ModID, $classStart, $classEnd, $timestamp);
+$db->createClass($ModID, $classStart, $classEnd, $timestamp);
 
 
 // get the PK for the class..
 
-//$classID = $db->getClassID($timestamp);
+$classID = $db->getClassID($timestamp);
 
 // create the QR code that will match the systems...
 
 $qr->makeQRCode($timestamp);
 
+$qrImageFile = $timestamp . DIRECTORY_SEPARATOR . $timestamp . ".png";
 
+echo '<img src="'. $qrImageFile . '"/>';
 
 //$qr->distroyqr($timestamp);
 
