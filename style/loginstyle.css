@@ -1,0 +1,106 @@
+body {
+  font-family: Verdana, Arial, Helvetica;
+  background-color: #666666;
+}
+
+#wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  width: 960px;
+  background-color: #FFFFFF;
+}
+
+#wrapper #footer {
+  background-color: #6699FF;
+  position: relative;
+  height: 50px;
+  bottom: auto;
+  width: 960px;
+  top: auto;
+  clear: both;
+}
+
+#wrapper #Top {
+  background-color: #003399;
+  color: #FFFFFF;
+}
+
+#wrapper #mainContent{
+  position: relative;
+  float: left;
+  width: 960px;
+  height: 350px;
+  overflow: auto;
+}
+
+#wrapper #Top #loginContainer #loginStatus {
+  padding: 5px;
+}
+
+#wrapper #Top #siteTitle {
+  font-family: Verdana, Arial, Helvetica;
+  font-size: 50px;
+  font-style: italic;
+  width: 450px;
+  display: inline-block;
+  float: left;
+  margin-left: 20px;
+  font-weight: bolder;
+  color: #6699FF;
+}
+
+h1 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 24px;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  color: #003399;
+}
+
+#footer #footLeft {
+  display: inline-block;
+  width: 320px;
+}
+
+#footer #footMiddle {
+  display: inline-block;
+  width: 320px;
+}
+
+#footer #footRight {
+  display: inline-block;
+  width: 300px;
+}
+
+.requiredfield{
+  
+  font-size: 18px;
+  margin-left: 50px;
+  padding: 5px;
+}
+
+.lbl{
+  font-size: 18px;
+  width: 100px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.button{
+  font-size: 18px;
+  margin-left: 175px;
+  padding: 5px;
+  width: 100px;
+}
+
+a {
+  color: rgba(255,255,255,1);
+}
+
+form{
+  
+  padding-left: 30px;
+  
+}
