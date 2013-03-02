@@ -200,11 +200,11 @@ function tutorAdminButtons(){
 	courseID = currentCourse;
 	
 	output ="";
-	output += "<h1>Class Administration Area</h1>"
+	output += "<h1>Class Administration Area</h1>";
 	
-	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
-	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
-	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
+	output += "<div class='newQRButton' onClick='createQRCode("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>Take Attend Now</div>";
+	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>Redisplay Prev</div>";
+	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>View Averages</div>";
 	output += "<div class='newQRButton' onClick='createQRCode("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>Better Version</div>";
 	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
 	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
@@ -217,9 +217,32 @@ function createQRCode(courseID){
 	
 	console.log(courseID);
 	
+	var date = new Date();
+	
+	
+	date.getDate();
+	date.getDay();
+	date.getFullYear();
+	date.getHours();
+	date.getUTCDate();
+	
+	
+// '2012-11-22 10:08:00'	
+	
+	var classStart = "'" + date.getFullYear() + "-" +date.getMonth()+ "-"+ date.getDay() + " "+ date.getHours()+ ":00:00'";
+	
 	outHTML = "<h1>CONTENT CLEARED</h1>";
 	
 	document.getElementById("mainContent").innerHTML = outHTML;
+	
+	cTime = date.toGMTString();
+	
+	console.log(cTime);
+	console.log(date.getDate());	
+	console.log(date.getDay());	
+	console.log(date.getFullYear());
+	console.log(classStart);
+	
 	
 	
 }
