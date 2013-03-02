@@ -1,6 +1,6 @@
 <?php
 
-include 'db/db.php';
+include '../db/db.php';
 
 
 class atadmin extends db{

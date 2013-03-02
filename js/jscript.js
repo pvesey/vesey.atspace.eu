@@ -241,8 +241,13 @@ function createQRCode(courseID){
 	var startHour = String(date.getHours());
 	var endHour = String(date.getHours() + 1);
 	
-	var classStart = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ startHour + ':00:00"';
-	var classFinish = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ endHour + ':00:00"';
+//	var classStart = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ startHour + ':00:00"';
+//	var classFinish = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ endHour + ':00:00"';
+
+	var classStart = startHour;
+	var classFinish = endHour;
+	
+	
 	
 	outHTML = "<h1>Content Cleared</h1>";
 	

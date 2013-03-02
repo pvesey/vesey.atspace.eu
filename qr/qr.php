@@ -13,78 +13,10 @@ class qr{
   private $_SQLTempInsert = "";
   private $_dirName = "";
   private $_qrImageFile ="";
-  
+  private $_libDir = "http://localhost/vesey.atspace.eu/lib/";
+  private $_styleDir = "http://localhost/vesey.atspace.eu/style/";
+
  
-  function mkcode(){
-    $errorCorrectionLevel = 'H';
-    $matrixPointSize = 10;
-    $timestamp = md5(time());
-    $dirName = 'CMI'.$timestamp;
-    $this->_dirName = $dirName;
-    $tempURL = 'http://vesey.atspace.eu/CMI'.$timestamp.'/';
-  
-  // Need to modify this as part of a configuration file.
-  
-    $PNG_TEMP_DIR = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
-    $PNG_WEB_DIR = 'qr/temp/';
-    
-    echo "<br>PNG TEMP DIR ". $PNG_TEMP_DIR . "<br>";
-    echo "<br>PNG WEB DIR ". $PNG_WEB_DIR . "<br>";
-  
-    $CMITempDir = getcwd().DIRECTORY_SEPARATOR.$dirName.DIRECTORY_SEPARATOR;
-    $filename = $PNG_TEMP_DIR.'CMI'.$timestamp.'.png';
-  
-    echo "<br>CMITempDIR ". $CMITempDir . "<br>";
-    echo "<br>Filename ". $filename . "<br>";
-    
-    $InputFile = getcwd().DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR."takeattend.php";
-    $this->_InputTempFile = $CMITempDir."index.php";
-  
-    $SQLInsertFile = getcwd().DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR."insertdata.php";
-    $this->_SQLTempInsert = $CMITempDir."insertdata.php";
-  
-  
-    $CSSFile = getcwd().DIRECTORY_SEPARATOR."style".DIRECTORY_SEPARATOR."qrstyle.css";
-    $this->_cssStyle = $CMITempDir."qrstyle.css";
-  
-  
-    echo "<h1>Count-Me-In (Alpha)</h1><hr/>";
-  
-    //set it to writable location, a place for temp generated PNG files
-  
-    //html PNG location prefix
-  
-  //ofcourse we need rights to create temp dir
-    if (!file_exists($PNG_TEMP_DIR))
-      mkdir($PNG_TEMP_DIR);
-  
-  // md5 hash tag of the unix time to create a name and directory
-  
-  //processing form input
-  //remember to sanitize user input in real-life solution !!!
-  
-  
-    echo "<h2>".$timestamp."</h2>";
-    echo "<h2>".$dirName."</h2>";
-    echo "<h2>".getcwd() ."</h2>";
-    
-    
-    echo "<br>";
-  
-  
-    mkdir($dirName);  
-    
-    QRcode::png($tempURL, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
-  
-  //display generated file
-    echo '<img src="'.$PNG_WEB_DIR.basename($filename).'" /><hr/>';
-  
-    copy($InputFile, $this->_InputTempFile);  // copy the php/html form
-    copy($SQLInsertFile, $this->_SQLTempInsert); //php script to put data into database
-    copy($CSSFile, $this->_cssStyle);  //CSS style file.  (MAY BE A WORKAROUND HERE)
-  
-  
-  }
   
   function distroyqr(){
 
@@ -112,14 +44,14 @@ class qr{
   	
     $this->_qrImageFile = $CMITempDir.$md5.'.png';
     $filename = $md5.DIRECTORY_SEPARATOR.$md5.'.png';
-  	
-  	$InputFile = getcwd().DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR."takeattend.php";
+
+    $InputFile = $this->_libDir."takeattend.php";
   	$this->_InputTempFile = $CMITempDir."index.php";
-  
-  	$SQLInsertFile = getcwd().DIRECTORY_SEPARATOR."lib".DIRECTORY_SEPARATOR."insertdata.php";
+
+  	$SQLInsertFile = $this->_libDir."insertdata.php";
   	$this->_SQLTempInsert = $CMITempDir."insertdata.php";
-  
-  	$CSSFile = getcwd().DIRECTORY_SEPARATOR."style".DIRECTORY_SEPARATOR."qrstyle.css";
+
+  	$CSSFile = $this->_styleDir."qrstyle.css";
   	$this->_cssStyle = $CMITempDir."qrstyle.css";
   
   	mkdir($dirName);

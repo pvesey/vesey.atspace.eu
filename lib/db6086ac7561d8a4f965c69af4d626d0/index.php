@@ -1,23 +1,3 @@
-<?php 
-
-include getcwd().DIRECTORY_SEPARATOR.'../db/db.php';
-include dirname(__FILE__).DIRECTORY_SEPARATOR.'insertdata.php';
-$class = 288;
-
-$dbatt = new db();
-
-$dbatt->condb();
-// testing on user 146   KX0000145 pass
-// need to build into a transaction to avoid trying to login twice..  SQL Trans for this
-
-
-$username = $dbatt->getUsername();
-$password = $dbatt->getPassword();
-
-$dbatt->logAttend($class, $username, $password)
-
-
-?>
 
 
 <!DOCTYPE html>
