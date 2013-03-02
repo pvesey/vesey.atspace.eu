@@ -1,17 +1,8 @@
 <?php 
+
 include getcwd().DIRECTORY_SEPARATOR.'../db/db.php';
 include dirname(__FILE__).DIRECTORY_SEPARATOR.'insertdata.php';
-
-function getClassMD5(){
-	
-	$loc = dirname(__FILE__);
-	$loc = substr($loc, -32, 32);
-	echo $loc . "<br>";
-	return $loc;
-}
-
-
-$class = getClassMD5();
+$class = 288;
 
 $dbatt = new db();
 
@@ -20,6 +11,12 @@ $dbatt->condb();
 // need to build into a transaction to avoid trying to login twice..  SQL Trans for this
 // Class ID has to come from QR code... ie directory structure.  know that it is 32 char .. so may 
 // be able to use that.
+
+
+echo __FILE__;
+
+
+
 
 
 $username = $dbatt->getUsername();
