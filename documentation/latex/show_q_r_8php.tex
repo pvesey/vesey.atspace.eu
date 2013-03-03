@@ -1,0 +1,50 @@
+\hypertarget{show_q_r_8php}{\section{C\-:/wamp/www/vesey.atspace.\-eu/lib/show\-Q\-R.php File Reference}
+\label{show_q_r_8php}\index{C\-:/wamp/www/vesey.\-atspace.\-eu/lib/show\-Q\-R.\-php@{C\-:/wamp/www/vesey.\-atspace.\-eu/lib/show\-Q\-R.\-php}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+if(isset(\$\-\_\-\-G\-E\-T\mbox{[}\char`\"{}p\char`\"{}\mbox{]})) if(isset(\$\-\_\-\-G\-E\-T\mbox{[}\char`\"{}q\char`\"{}\mbox{]})) \\*
+if(isset(\$\-\_\-\-G\-E\-T\mbox{[}\char`\"{}r\char`\"{}\mbox{]})) \hyperlink{show_q_r_8php_afb731abd6ad83da8867642b5796ca908}{\$today} = date(\char`\"{}Y-\/m-\/d\char`\"{})
+\item 
+\hyperlink{show_q_r_8php_a8290a94ec873262d279b188952321760}{\$class\-Start} = \$today . \char`\"{} \char`\"{} . \$class\-Start . \char`\"{}\-:00\-:00\char`\"{}
+\item 
+\hyperlink{show_q_r_8php_a4abed065999cb36b961988a7bf6e48a0}{\$class\-End} = \$today . \char`\"{} \char`\"{} . \$class\-End . \char`\"{}\-:00\-:00\char`\"{}
+\item 
+\hyperlink{show_q_r_8php_a2b69de9676dd97c675cd4d9bcceb684c}{\$timestamp} = md5(time())
+\item 
+\hyperlink{show_q_r_8php_a1fa3127fc82f96b1436d871ef02be319}{\$db} = new \hyperlink{classatadmin}{atadmin}()
+\item 
+\hyperlink{show_q_r_8php_a2357c56e11778cb14e3c86756ae724be}{\$qr} = new \hyperlink{classqr}{qr}()
+\item 
+\hyperlink{show_q_r_8php_a48ffa401b856e5d2f7f4617bb2a8d580}{\$class\-I\-D} = \$\hyperlink{classdb}{db}-\/$>$get\-Class\-I\-D(\$timestamp)
+\item 
+\hyperlink{show_q_r_8php_ab1a38d361892b3a36e93a134278a468a}{\$qr\-Image\-File} = \$timestamp . D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R . \$timestamp . \char`\"{}.png\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{show_q_r_8php_a4abed065999cb36b961988a7bf6e48a0}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$class\-End@{\$class\-End}}
+\index{\$class\-End@{\$class\-End}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$class\-End}]{\setlength{\rightskip}{0pt plus 5cm}\$class\-End = \$today . \char`\"{} \char`\"{} . \$class\-End . \char`\"{}\-:00\-:00\char`\"{}}}\label{show_q_r_8php_a4abed065999cb36b961988a7bf6e48a0}
+\hypertarget{show_q_r_8php_a48ffa401b856e5d2f7f4617bb2a8d580}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$class\-I\-D@{\$class\-I\-D}}
+\index{\$class\-I\-D@{\$class\-I\-D}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$class\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}\$class\-I\-D = \${\bf db}-\/$>$get\-Class\-I\-D(\$timestamp)}}\label{show_q_r_8php_a48ffa401b856e5d2f7f4617bb2a8d580}
+\hypertarget{show_q_r_8php_a8290a94ec873262d279b188952321760}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$class\-Start@{\$class\-Start}}
+\index{\$class\-Start@{\$class\-Start}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$class\-Start}]{\setlength{\rightskip}{0pt plus 5cm}\$class\-Start = \$today . \char`\"{} \char`\"{} . \$class\-Start . \char`\"{}\-:00\-:00\char`\"{}}}\label{show_q_r_8php_a8290a94ec873262d279b188952321760}
+\hypertarget{show_q_r_8php_a1fa3127fc82f96b1436d871ef02be319}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$db@{\$db}}
+\index{\$db@{\$db}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$db}]{\setlength{\rightskip}{0pt plus 5cm}\${\bf db} = new {\bf atadmin}()}}\label{show_q_r_8php_a1fa3127fc82f96b1436d871ef02be319}
+\hypertarget{show_q_r_8php_a2357c56e11778cb14e3c86756ae724be}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$qr@{\$qr}}
+\index{\$qr@{\$qr}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$qr}]{\setlength{\rightskip}{0pt plus 5cm}\${\bf qr} = new {\bf qr}()}}\label{show_q_r_8php_a2357c56e11778cb14e3c86756ae724be}
+\hypertarget{show_q_r_8php_ab1a38d361892b3a36e93a134278a468a}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$qr\-Image\-File@{\$qr\-Image\-File}}
+\index{\$qr\-Image\-File@{\$qr\-Image\-File}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$qr\-Image\-File}]{\setlength{\rightskip}{0pt plus 5cm}\$qr\-Image\-File = \$timestamp . D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R . \$timestamp . \char`\"{}.png\char`\"{}}}\label{show_q_r_8php_ab1a38d361892b3a36e93a134278a468a}
+\hypertarget{show_q_r_8php_a2b69de9676dd97c675cd4d9bcceb684c}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$timestamp@{\$timestamp}}
+\index{\$timestamp@{\$timestamp}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$timestamp}]{\setlength{\rightskip}{0pt plus 5cm}\$timestamp = md5(time())}}\label{show_q_r_8php_a2b69de9676dd97c675cd4d9bcceb684c}
+\hypertarget{show_q_r_8php_afb731abd6ad83da8867642b5796ca908}{\index{show\-Q\-R.\-php@{show\-Q\-R.\-php}!\$today@{\$today}}
+\index{\$today@{\$today}!showQR.php@{show\-Q\-R.\-php}}
+\subsubsection[{\$today}]{\setlength{\rightskip}{0pt plus 5cm}if (isset(\$\-\_\-\-G\-E\-T\mbox{[}\char`\"{}p\char`\"{}\mbox{]})) if (isset(\$\-\_\-\-G\-E\-T\mbox{[}\char`\"{}q\char`\"{}\mbox{]})) if (isset(\$\-\_\-\-G\-E\-T\mbox{[}\char`\"{}r\char`\"{}\mbox{]})) \$today = date(\char`\"{}Y-\/m-\/d\char`\"{})}}\label{show_q_r_8php_afb731abd6ad83da8867642b5796ca908}

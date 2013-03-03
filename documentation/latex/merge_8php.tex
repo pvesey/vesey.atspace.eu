@@ -1,0 +1,70 @@
+\hypertarget{merge_8php}{\section{C\-:/wamp/www/vesey.atspace.\-eu/qr/tools/merge.php File Reference}
+\label{merge_8php}\index{C\-:/wamp/www/vesey.\-atspace.\-eu/qr/tools/merge.\-php@{C\-:/wamp/www/vesey.\-atspace.\-eu/qr/tools/merge.\-php}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{merge_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{\$\-Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R} = dirname(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-).D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.'..'.D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R
+\item 
+\hyperlink{merge_8php_ae417e541a5565832b8f420a2a802677e}{\$\-Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R} = dirname(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-).D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R
+\item 
+\hyperlink{merge_8php_ad936d9f60325793d1fb7bc155bb36607}{\$output\-File} = \$Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R.'phpqrcode.\-php'
+\item 
+\hyperlink{merge_8php_ae2e98845ed3d2254c1482c0c3b6f9ff3}{\$file\-List}
+\item 
+\hyperlink{merge_8php_af243fbc21177be2a85033a3596457d23}{\$header\-File} = \$Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R.'merged\-\_\-header.\-php'
+\item 
+\hyperlink{merge_8php_a89ce9781b8ddbd4548b0bd11b2a11b30}{\$version\-File} = \$Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R.'V\-E\-R\-S\-I\-O\-N'
+\item 
+\hyperlink{merge_8php_af6f6877b476d46f61a45ef886ba846ee}{\$output\-Code} = ''
+\item 
+foreach(\$file\-List as \$file\-Name) \hyperlink{merge_8php_afdf5d77c1948029c7d27d6011e876a61}{\$version\-Data\-Ex} = explode(\char`\"{}\textbackslash{}n\char`\"{}, file\-\_\-get\-\_\-contents(\$version\-File))
+\item 
+\hyperlink{merge_8php_a5e82fe2dc648d283b082d2f7cb25c506}{\$output\-Contents} = file\-\_\-get\-\_\-contents(\$header\-File)
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{merge_8php_ae2e98845ed3d2254c1482c0c3b6f9ff3}{\index{merge.\-php@{merge.\-php}!\$file\-List@{\$file\-List}}
+\index{\$file\-List@{\$file\-List}!merge.php@{merge.\-php}}
+\subsubsection[{\$file\-List}]{\setlength{\rightskip}{0pt plus 5cm}\$file\-List}}\label{merge_8php_ae2e98845ed3d2254c1482c0c3b6f9ff3}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= array(
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrconst.php'},
+        \hyperlink{merge_8php_ae417e541a5565832b8f420a2a802677e}{$QR\_TOOLSDIR}.\textcolor{stringliteral}{'merged\_config.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrtools.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrspec.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrimage.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrinput.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrbitstream.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrsplit.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrrscode.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrmask.php'},
+        \hyperlink{qrlib_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{$QR\_BASEDIR}.\textcolor{stringliteral}{'qrencode.php'}
+    )
+\end{DoxyCode}
+\hypertarget{merge_8php_af243fbc21177be2a85033a3596457d23}{\index{merge.\-php@{merge.\-php}!\$header\-File@{\$header\-File}}
+\index{\$header\-File@{\$header\-File}!merge.php@{merge.\-php}}
+\subsubsection[{\$header\-File}]{\setlength{\rightskip}{0pt plus 5cm}\$header\-File = \$Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R.'merged\-\_\-header.\-php'}}\label{merge_8php_af243fbc21177be2a85033a3596457d23}
+\hypertarget{merge_8php_af6f6877b476d46f61a45ef886ba846ee}{\index{merge.\-php@{merge.\-php}!\$output\-Code@{\$output\-Code}}
+\index{\$output\-Code@{\$output\-Code}!merge.php@{merge.\-php}}
+\subsubsection[{\$output\-Code}]{\setlength{\rightskip}{0pt plus 5cm}\$output\-Code = ''}}\label{merge_8php_af6f6877b476d46f61a45ef886ba846ee}
+\hypertarget{merge_8php_a5e82fe2dc648d283b082d2f7cb25c506}{\index{merge.\-php@{merge.\-php}!\$output\-Contents@{\$output\-Contents}}
+\index{\$output\-Contents@{\$output\-Contents}!merge.php@{merge.\-php}}
+\subsubsection[{\$output\-Contents}]{\setlength{\rightskip}{0pt plus 5cm}\$output\-Contents = file\-\_\-get\-\_\-contents(\$header\-File)}}\label{merge_8php_a5e82fe2dc648d283b082d2f7cb25c506}
+\hypertarget{merge_8php_ad936d9f60325793d1fb7bc155bb36607}{\index{merge.\-php@{merge.\-php}!\$output\-File@{\$output\-File}}
+\index{\$output\-File@{\$output\-File}!merge.php@{merge.\-php}}
+\subsubsection[{\$output\-File}]{\setlength{\rightskip}{0pt plus 5cm}\$output\-File = \$Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R.'phpqrcode.\-php'}}\label{merge_8php_ad936d9f60325793d1fb7bc155bb36607}
+\hypertarget{merge_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}{\index{merge.\-php@{merge.\-php}!\$\-Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R@{\$\-Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R}}
+\index{\$\-Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R@{\$\-Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R}!merge.php@{merge.\-php}}
+\subsubsection[{\$\-Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\$Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R = dirname(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-).D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.'..'.D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}}\label{merge_8php_a2b9a0b4d98e1e23a5460e3639fdae91b}
+\hypertarget{merge_8php_ae417e541a5565832b8f420a2a802677e}{\index{merge.\-php@{merge.\-php}!\$\-Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R@{\$\-Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R}}
+\index{\$\-Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R@{\$\-Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R}!merge.php@{merge.\-php}}
+\subsubsection[{\$\-Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\$Q\-R\-\_\-\-T\-O\-O\-L\-S\-D\-I\-R = dirname(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-).D\-I\-R\-E\-C\-T\-O\-R\-Y\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}}\label{merge_8php_ae417e541a5565832b8f420a2a802677e}
+\hypertarget{merge_8php_afdf5d77c1948029c7d27d6011e876a61}{\index{merge.\-php@{merge.\-php}!\$version\-Data\-Ex@{\$version\-Data\-Ex}}
+\index{\$version\-Data\-Ex@{\$version\-Data\-Ex}!merge.php@{merge.\-php}}
+\subsubsection[{\$version\-Data\-Ex}]{\setlength{\rightskip}{0pt plus 5cm}foreach (\$file\-List as \$file\-Name) \$version\-Data\-Ex = explode(\char`\"{}\textbackslash{}n\char`\"{}, file\-\_\-get\-\_\-contents(\$version\-File))}}\label{merge_8php_afdf5d77c1948029c7d27d6011e876a61}
+\hypertarget{merge_8php_a89ce9781b8ddbd4548b0bd11b2a11b30}{\index{merge.\-php@{merge.\-php}!\$version\-File@{\$version\-File}}
+\index{\$version\-File@{\$version\-File}!merge.php@{merge.\-php}}
+\subsubsection[{\$version\-File}]{\setlength{\rightskip}{0pt plus 5cm}\$version\-File = \$Q\-R\-\_\-\-B\-A\-S\-E\-D\-I\-R.'V\-E\-R\-S\-I\-O\-N'}}\label{merge_8php_a89ce9781b8ddbd4548b0bd11b2a11b30}

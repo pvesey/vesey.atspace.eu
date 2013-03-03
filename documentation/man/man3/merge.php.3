@@ -1,0 +1,78 @@
+.TH "C:/wamp/www/vesey.atspace.eu/qr/tools/merge.php" 3 "Sun Mar 3 2013" "Version 0.001" "Count Me In" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/wamp/www/vesey.atspace.eu/qr/tools/merge.php \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fB$QR_BASEDIR\fP = dirname(__FILE__)\&.DIRECTORY_SEPARATOR\&.'\&.\&.'\&.DIRECTORY_SEPARATOR"
+.br
+.ti -1c
+.RI "\fB$QR_TOOLSDIR\fP = dirname(__FILE__)\&.DIRECTORY_SEPARATOR"
+.br
+.ti -1c
+.RI "\fB$outputFile\fP = $QR_BASEDIR\&.'phpqrcode\&.php'"
+.br
+.ti -1c
+.RI "\fB$fileList\fP"
+.br
+.ti -1c
+.RI "\fB$headerFile\fP = $QR_TOOLSDIR\&.'merged_header\&.php'"
+.br
+.ti -1c
+.RI "\fB$versionFile\fP = $QR_BASEDIR\&.'VERSION'"
+.br
+.ti -1c
+.RI "\fB$outputCode\fP = ''"
+.br
+.ti -1c
+.RI "foreach($fileList as $fileName) \fB$versionDataEx\fP = explode('\\n', file_get_contents($versionFile))"
+.br
+.ti -1c
+.RI "\fB$outputContents\fP = file_get_contents($headerFile)"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "$fileList"
+\fBInitial value:\fP
+.PP
+.nf
+= array(
+        $QR_BASEDIR\&.'qrconst\&.php',
+        $QR_TOOLSDIR\&.'merged_config\&.php',
+        $QR_BASEDIR\&.'qrtools\&.php',
+        $QR_BASEDIR\&.'qrspec\&.php',
+        $QR_BASEDIR\&.'qrimage\&.php',
+        $QR_BASEDIR\&.'qrinput\&.php',
+        $QR_BASEDIR\&.'qrbitstream\&.php',
+        $QR_BASEDIR\&.'qrsplit\&.php',
+        $QR_BASEDIR\&.'qrrscode\&.php',
+        $QR_BASEDIR\&.'qrmask\&.php',
+        $QR_BASEDIR\&.'qrencode\&.php'
+    )
+.fi
+.SS "$headerFile = $QR_TOOLSDIR\&.'merged_header\&.php'"
+
+.SS "$outputCode = ''"
+
+.SS "$outputContents = file_get_contents($headerFile)"
+
+.SS "$outputFile = $QR_BASEDIR\&.'phpqrcode\&.php'"
+
+.SS "$QR_BASEDIR = dirname(__FILE__)\&.DIRECTORY_SEPARATOR\&.'\&.\&.'\&.DIRECTORY_SEPARATOR"
+
+.SS "$QR_TOOLSDIR = dirname(__FILE__)\&.DIRECTORY_SEPARATOR"
+
+.SS "foreach ($fileList as $fileName) $versionDataEx = explode('\\n', file_get_contents($versionFile))"
+
+.SS "$versionFile = $QR_BASEDIR\&.'VERSION'"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Count Me In from the source code\&.

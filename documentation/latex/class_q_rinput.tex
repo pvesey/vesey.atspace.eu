@@ -1,0 +1,307 @@
+\hypertarget{class_q_rinput}{\section{Q\-Rinput Class Reference}
+\label{class_q_rinput}\index{Q\-Rinput@{Q\-Rinput}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_q_rinput_a2351f3e3ad5a02db547f8ee889c3decd}{\-\_\-\-\_\-construct} (\$version=0, \$level=\hyperlink{qrconst_8php_ae106d3baebd9c27c90b2abadb25df012}{Q\-R\-\_\-\-E\-C\-L\-E\-V\-E\-L\-\_\-\-L})
+\item 
+\hyperlink{class_q_rinput_afa8e7a3a646144eab50188b7a805a389}{get\-Version} ()
+\item 
+\hyperlink{class_q_rinput_a6a2f870d59df617e76c79a9996646832}{set\-Version} (\$version)
+\item 
+\hyperlink{class_q_rinput_a6e49359a6d54ec766176ad52095fe8fb}{get\-Error\-Correction\-Level} ()
+\item 
+\hyperlink{class_q_rinput_a0d2d8094a1d5f38f40d0c7c92a8e4e55}{set\-Error\-Correction\-Level} (\$level)
+\item 
+\hyperlink{class_q_rinput_aa58f7c083dab2a76d10666e48488f48d}{append\-Entry} (\hyperlink{class_q_rinput_item}{Q\-Rinput\-Item} \$entry)
+\item 
+\hyperlink{class_q_rinput_a7998c9ddbbe047ddfb49701bcab2f201}{append} (\$mode, \$size, \$data)
+\item 
+\hyperlink{class_q_rinput_a5135cf4451a31fd114891eda812925c5}{insert\-Structured\-Append\-Header} (\$size, \$index, \$parity)
+\item 
+\hyperlink{class_q_rinput_a3226eaa1f9eb7678361c4b57e33de7b9}{calc\-Parity} ()
+\item 
+\hyperlink{class_q_rinput_a2f00f20d82e030bbd7c1dc0edd1993a2}{estimate\-Bits\-Mode\-Kanji} (\$size)
+\item 
+\hyperlink{class_q_rinput_a4c0d6f07d39ba33e72c4b50a962b2915}{estimate\-Bit\-Stream\-Size} (\$version)
+\item 
+\hyperlink{class_q_rinput_a5ba363f173fa4d97b248095da0e560b4}{estimate\-Version} ()
+\item 
+\hyperlink{class_q_rinput_af32e641c34e1043162b5f290cac64c88}{create\-Bit\-Stream} ()
+\item 
+\hyperlink{class_q_rinput_a5c0ff30b7602ddfb3cca2d111064af4b}{convert\-Data} ()
+\item 
+\hyperlink{class_q_rinput_a78d33b81045b29e5f7632965a7194b47}{append\-Padding\-Bit} (\&\$bstream)
+\item 
+\hyperlink{class_q_rinput_abfe700763d59c433cf7e319b9e1d0085}{merge\-Bit\-Stream} ()
+\item 
+\hyperlink{class_q_rinput_a431c3808327e69458e57e17f371fdb55}{get\-Bit\-Stream} ()
+\item 
+\hyperlink{class_q_rinput_abcfabd8a5fbceee737a6c7078bf7f6a1}{get\-Byte\-Stream} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_q_rinput_a57451029723cde8347098dea7eabb8db}{check\-Mode\-Num} (\$size, \$data)
+\item 
+static \hyperlink{class_q_rinput_aa42b996fbff281fa01d5a202a38ce43f}{estimate\-Bits\-Mode\-Num} (\$size)
+\item 
+static \hyperlink{class_q_rinput_a1b6c565bec384d2fb500147dc20fed3a}{look\-An\-Table} (\$c)
+\item 
+static \hyperlink{class_q_rinput_add3eed60efd4da1dfcfb1fc4217a95f0}{check\-Mode\-An} (\$size, \$data)
+\item 
+static \hyperlink{class_q_rinput_aaa071259baa5ac76a84c573467f27a25}{estimate\-Bits\-Mode\-An} (\$size)
+\item 
+static \hyperlink{class_q_rinput_a308300a85bc46506ec5a734bde289317}{estimate\-Bits\-Mode8} (\$size)
+\item 
+static \hyperlink{class_q_rinput_a38f007ce0abd312f8697953b6c456105}{check\-Mode\-Kanji} (\$size, \$data)
+\item 
+static \hyperlink{class_q_rinput_a45e1994f56dd5f3183e08d475e9757c0}{check} (\$mode, \$size, \$data)
+\item 
+static \hyperlink{class_q_rinput_a369d51897f4471e4edf4dfa2b2bf22aa}{length\-Of\-Code} (\$mode, \$version, \$bits)
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_q_rinput_a737abdef83dabb219182c1e88887c6c3}{\$items}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_q_rinput_ab60a6875b03625230e309bc73343f153}{\$an\-Table}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_q_rinput_a2351f3e3ad5a02db547f8ee889c3decd}{\index{Q\-Rinput@{Q\-Rinput}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!QRinput@{Q\-Rinput}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$version = {\ttfamily 0}, }
+\item[{}]{\$level = {\ttfamily {\bf Q\-R\-\_\-\-E\-C\-L\-E\-V\-E\-L\-\_\-\-L}}}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a2351f3e3ad5a02db547f8ee889c3decd}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_q_rinput_a7998c9ddbbe047ddfb49701bcab2f201}{\index{Q\-Rinput@{Q\-Rinput}!append@{append}}
+\index{append@{append}!QRinput@{Q\-Rinput}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}append (
+\begin{DoxyParamCaption}
+\item[{}]{\$mode, }
+\item[{}]{\$size, }
+\item[{}]{\$data}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a7998c9ddbbe047ddfb49701bcab2f201}
+\hypertarget{class_q_rinput_aa58f7c083dab2a76d10666e48488f48d}{\index{Q\-Rinput@{Q\-Rinput}!append\-Entry@{append\-Entry}}
+\index{append\-Entry@{append\-Entry}!QRinput@{Q\-Rinput}}
+\subsubsection[{append\-Entry}]{\setlength{\rightskip}{0pt plus 5cm}append\-Entry (
+\begin{DoxyParamCaption}
+\item[{{\bf Q\-Rinput\-Item}}]{\$entry}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_aa58f7c083dab2a76d10666e48488f48d}
+\hypertarget{class_q_rinput_a78d33b81045b29e5f7632965a7194b47}{\index{Q\-Rinput@{Q\-Rinput}!append\-Padding\-Bit@{append\-Padding\-Bit}}
+\index{append\-Padding\-Bit@{append\-Padding\-Bit}!QRinput@{Q\-Rinput}}
+\subsubsection[{append\-Padding\-Bit}]{\setlength{\rightskip}{0pt plus 5cm}append\-Padding\-Bit (
+\begin{DoxyParamCaption}
+\item[{\&}]{\$bstream}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a78d33b81045b29e5f7632965a7194b47}
+\hypertarget{class_q_rinput_a3226eaa1f9eb7678361c4b57e33de7b9}{\index{Q\-Rinput@{Q\-Rinput}!calc\-Parity@{calc\-Parity}}
+\index{calc\-Parity@{calc\-Parity}!QRinput@{Q\-Rinput}}
+\subsubsection[{calc\-Parity}]{\setlength{\rightskip}{0pt plus 5cm}calc\-Parity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a3226eaa1f9eb7678361c4b57e33de7b9}
+\hypertarget{class_q_rinput_a45e1994f56dd5f3183e08d475e9757c0}{\index{Q\-Rinput@{Q\-Rinput}!check@{check}}
+\index{check@{check}!QRinput@{Q\-Rinput}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}static check (
+\begin{DoxyParamCaption}
+\item[{}]{\$mode, }
+\item[{}]{\$size, }
+\item[{}]{\$data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_a45e1994f56dd5f3183e08d475e9757c0}
+\hypertarget{class_q_rinput_add3eed60efd4da1dfcfb1fc4217a95f0}{\index{Q\-Rinput@{Q\-Rinput}!check\-Mode\-An@{check\-Mode\-An}}
+\index{check\-Mode\-An@{check\-Mode\-An}!QRinput@{Q\-Rinput}}
+\subsubsection[{check\-Mode\-An}]{\setlength{\rightskip}{0pt plus 5cm}static check\-Mode\-An (
+\begin{DoxyParamCaption}
+\item[{}]{\$size, }
+\item[{}]{\$data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_add3eed60efd4da1dfcfb1fc4217a95f0}
+\hypertarget{class_q_rinput_a38f007ce0abd312f8697953b6c456105}{\index{Q\-Rinput@{Q\-Rinput}!check\-Mode\-Kanji@{check\-Mode\-Kanji}}
+\index{check\-Mode\-Kanji@{check\-Mode\-Kanji}!QRinput@{Q\-Rinput}}
+\subsubsection[{check\-Mode\-Kanji}]{\setlength{\rightskip}{0pt plus 5cm}static check\-Mode\-Kanji (
+\begin{DoxyParamCaption}
+\item[{}]{\$size, }
+\item[{}]{\$data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_a38f007ce0abd312f8697953b6c456105}
+\hypertarget{class_q_rinput_a57451029723cde8347098dea7eabb8db}{\index{Q\-Rinput@{Q\-Rinput}!check\-Mode\-Num@{check\-Mode\-Num}}
+\index{check\-Mode\-Num@{check\-Mode\-Num}!QRinput@{Q\-Rinput}}
+\subsubsection[{check\-Mode\-Num}]{\setlength{\rightskip}{0pt plus 5cm}static check\-Mode\-Num (
+\begin{DoxyParamCaption}
+\item[{}]{\$size, }
+\item[{}]{\$data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_a57451029723cde8347098dea7eabb8db}
+\hypertarget{class_q_rinput_a5c0ff30b7602ddfb3cca2d111064af4b}{\index{Q\-Rinput@{Q\-Rinput}!convert\-Data@{convert\-Data}}
+\index{convert\-Data@{convert\-Data}!QRinput@{Q\-Rinput}}
+\subsubsection[{convert\-Data}]{\setlength{\rightskip}{0pt plus 5cm}convert\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a5c0ff30b7602ddfb3cca2d111064af4b}
+\hypertarget{class_q_rinput_af32e641c34e1043162b5f290cac64c88}{\index{Q\-Rinput@{Q\-Rinput}!create\-Bit\-Stream@{create\-Bit\-Stream}}
+\index{create\-Bit\-Stream@{create\-Bit\-Stream}!QRinput@{Q\-Rinput}}
+\subsubsection[{create\-Bit\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}create\-Bit\-Stream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_af32e641c34e1043162b5f290cac64c88}
+\hypertarget{class_q_rinput_a308300a85bc46506ec5a734bde289317}{\index{Q\-Rinput@{Q\-Rinput}!estimate\-Bits\-Mode8@{estimate\-Bits\-Mode8}}
+\index{estimate\-Bits\-Mode8@{estimate\-Bits\-Mode8}!QRinput@{Q\-Rinput}}
+\subsubsection[{estimate\-Bits\-Mode8}]{\setlength{\rightskip}{0pt plus 5cm}static estimate\-Bits\-Mode8 (
+\begin{DoxyParamCaption}
+\item[{}]{\$size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_a308300a85bc46506ec5a734bde289317}
+\hypertarget{class_q_rinput_aaa071259baa5ac76a84c573467f27a25}{\index{Q\-Rinput@{Q\-Rinput}!estimate\-Bits\-Mode\-An@{estimate\-Bits\-Mode\-An}}
+\index{estimate\-Bits\-Mode\-An@{estimate\-Bits\-Mode\-An}!QRinput@{Q\-Rinput}}
+\subsubsection[{estimate\-Bits\-Mode\-An}]{\setlength{\rightskip}{0pt plus 5cm}static estimate\-Bits\-Mode\-An (
+\begin{DoxyParamCaption}
+\item[{}]{\$size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_aaa071259baa5ac76a84c573467f27a25}
+\hypertarget{class_q_rinput_a2f00f20d82e030bbd7c1dc0edd1993a2}{\index{Q\-Rinput@{Q\-Rinput}!estimate\-Bits\-Mode\-Kanji@{estimate\-Bits\-Mode\-Kanji}}
+\index{estimate\-Bits\-Mode\-Kanji@{estimate\-Bits\-Mode\-Kanji}!QRinput@{Q\-Rinput}}
+\subsubsection[{estimate\-Bits\-Mode\-Kanji}]{\setlength{\rightskip}{0pt plus 5cm}estimate\-Bits\-Mode\-Kanji (
+\begin{DoxyParamCaption}
+\item[{}]{\$size}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a2f00f20d82e030bbd7c1dc0edd1993a2}
+\hypertarget{class_q_rinput_aa42b996fbff281fa01d5a202a38ce43f}{\index{Q\-Rinput@{Q\-Rinput}!estimate\-Bits\-Mode\-Num@{estimate\-Bits\-Mode\-Num}}
+\index{estimate\-Bits\-Mode\-Num@{estimate\-Bits\-Mode\-Num}!QRinput@{Q\-Rinput}}
+\subsubsection[{estimate\-Bits\-Mode\-Num}]{\setlength{\rightskip}{0pt plus 5cm}static estimate\-Bits\-Mode\-Num (
+\begin{DoxyParamCaption}
+\item[{}]{\$size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_aa42b996fbff281fa01d5a202a38ce43f}
+\hypertarget{class_q_rinput_a4c0d6f07d39ba33e72c4b50a962b2915}{\index{Q\-Rinput@{Q\-Rinput}!estimate\-Bit\-Stream\-Size@{estimate\-Bit\-Stream\-Size}}
+\index{estimate\-Bit\-Stream\-Size@{estimate\-Bit\-Stream\-Size}!QRinput@{Q\-Rinput}}
+\subsubsection[{estimate\-Bit\-Stream\-Size}]{\setlength{\rightskip}{0pt plus 5cm}estimate\-Bit\-Stream\-Size (
+\begin{DoxyParamCaption}
+\item[{}]{\$version}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a4c0d6f07d39ba33e72c4b50a962b2915}
+\hypertarget{class_q_rinput_a5ba363f173fa4d97b248095da0e560b4}{\index{Q\-Rinput@{Q\-Rinput}!estimate\-Version@{estimate\-Version}}
+\index{estimate\-Version@{estimate\-Version}!QRinput@{Q\-Rinput}}
+\subsubsection[{estimate\-Version}]{\setlength{\rightskip}{0pt plus 5cm}estimate\-Version (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a5ba363f173fa4d97b248095da0e560b4}
+\hypertarget{class_q_rinput_a431c3808327e69458e57e17f371fdb55}{\index{Q\-Rinput@{Q\-Rinput}!get\-Bit\-Stream@{get\-Bit\-Stream}}
+\index{get\-Bit\-Stream@{get\-Bit\-Stream}!QRinput@{Q\-Rinput}}
+\subsubsection[{get\-Bit\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}get\-Bit\-Stream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a431c3808327e69458e57e17f371fdb55}
+\hypertarget{class_q_rinput_abcfabd8a5fbceee737a6c7078bf7f6a1}{\index{Q\-Rinput@{Q\-Rinput}!get\-Byte\-Stream@{get\-Byte\-Stream}}
+\index{get\-Byte\-Stream@{get\-Byte\-Stream}!QRinput@{Q\-Rinput}}
+\subsubsection[{get\-Byte\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}get\-Byte\-Stream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_abcfabd8a5fbceee737a6c7078bf7f6a1}
+\hypertarget{class_q_rinput_a6e49359a6d54ec766176ad52095fe8fb}{\index{Q\-Rinput@{Q\-Rinput}!get\-Error\-Correction\-Level@{get\-Error\-Correction\-Level}}
+\index{get\-Error\-Correction\-Level@{get\-Error\-Correction\-Level}!QRinput@{Q\-Rinput}}
+\subsubsection[{get\-Error\-Correction\-Level}]{\setlength{\rightskip}{0pt plus 5cm}get\-Error\-Correction\-Level (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a6e49359a6d54ec766176ad52095fe8fb}
+\hypertarget{class_q_rinput_afa8e7a3a646144eab50188b7a805a389}{\index{Q\-Rinput@{Q\-Rinput}!get\-Version@{get\-Version}}
+\index{get\-Version@{get\-Version}!QRinput@{Q\-Rinput}}
+\subsubsection[{get\-Version}]{\setlength{\rightskip}{0pt plus 5cm}get\-Version (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_afa8e7a3a646144eab50188b7a805a389}
+\hypertarget{class_q_rinput_a5135cf4451a31fd114891eda812925c5}{\index{Q\-Rinput@{Q\-Rinput}!insert\-Structured\-Append\-Header@{insert\-Structured\-Append\-Header}}
+\index{insert\-Structured\-Append\-Header@{insert\-Structured\-Append\-Header}!QRinput@{Q\-Rinput}}
+\subsubsection[{insert\-Structured\-Append\-Header}]{\setlength{\rightskip}{0pt plus 5cm}insert\-Structured\-Append\-Header (
+\begin{DoxyParamCaption}
+\item[{}]{\$size, }
+\item[{}]{\$index, }
+\item[{}]{\$parity}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a5135cf4451a31fd114891eda812925c5}
+\hypertarget{class_q_rinput_a369d51897f4471e4edf4dfa2b2bf22aa}{\index{Q\-Rinput@{Q\-Rinput}!length\-Of\-Code@{length\-Of\-Code}}
+\index{length\-Of\-Code@{length\-Of\-Code}!QRinput@{Q\-Rinput}}
+\subsubsection[{length\-Of\-Code}]{\setlength{\rightskip}{0pt plus 5cm}static length\-Of\-Code (
+\begin{DoxyParamCaption}
+\item[{}]{\$mode, }
+\item[{}]{\$version, }
+\item[{}]{\$bits}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_a369d51897f4471e4edf4dfa2b2bf22aa}
+\hypertarget{class_q_rinput_a1b6c565bec384d2fb500147dc20fed3a}{\index{Q\-Rinput@{Q\-Rinput}!look\-An\-Table@{look\-An\-Table}}
+\index{look\-An\-Table@{look\-An\-Table}!QRinput@{Q\-Rinput}}
+\subsubsection[{look\-An\-Table}]{\setlength{\rightskip}{0pt plus 5cm}static look\-An\-Table (
+\begin{DoxyParamCaption}
+\item[{}]{\$c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_a1b6c565bec384d2fb500147dc20fed3a}
+\hypertarget{class_q_rinput_abfe700763d59c433cf7e319b9e1d0085}{\index{Q\-Rinput@{Q\-Rinput}!merge\-Bit\-Stream@{merge\-Bit\-Stream}}
+\index{merge\-Bit\-Stream@{merge\-Bit\-Stream}!QRinput@{Q\-Rinput}}
+\subsubsection[{merge\-Bit\-Stream}]{\setlength{\rightskip}{0pt plus 5cm}merge\-Bit\-Stream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_abfe700763d59c433cf7e319b9e1d0085}
+\hypertarget{class_q_rinput_a0d2d8094a1d5f38f40d0c7c92a8e4e55}{\index{Q\-Rinput@{Q\-Rinput}!set\-Error\-Correction\-Level@{set\-Error\-Correction\-Level}}
+\index{set\-Error\-Correction\-Level@{set\-Error\-Correction\-Level}!QRinput@{Q\-Rinput}}
+\subsubsection[{set\-Error\-Correction\-Level}]{\setlength{\rightskip}{0pt plus 5cm}set\-Error\-Correction\-Level (
+\begin{DoxyParamCaption}
+\item[{}]{\$level}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a0d2d8094a1d5f38f40d0c7c92a8e4e55}
+\hypertarget{class_q_rinput_a6a2f870d59df617e76c79a9996646832}{\index{Q\-Rinput@{Q\-Rinput}!set\-Version@{set\-Version}}
+\index{set\-Version@{set\-Version}!QRinput@{Q\-Rinput}}
+\subsubsection[{set\-Version}]{\setlength{\rightskip}{0pt plus 5cm}set\-Version (
+\begin{DoxyParamCaption}
+\item[{}]{\$version}
+\end{DoxyParamCaption}
+)}}\label{class_q_rinput_a6a2f870d59df617e76c79a9996646832}
+
+
+\subsection{Field Documentation}
+\hypertarget{class_q_rinput_ab60a6875b03625230e309bc73343f153}{\index{Q\-Rinput@{Q\-Rinput}!\$an\-Table@{\$an\-Table}}
+\index{\$an\-Table@{\$an\-Table}!QRinput@{Q\-Rinput}}
+\subsubsection[{\$an\-Table}]{\setlength{\rightskip}{0pt plus 5cm}\$an\-Table\hspace{0.3cm}{\ttfamily [static]}}}\label{class_q_rinput_ab60a6875b03625230e309bc73343f153}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= array(
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            36, -1, -1, -1, 37, 38, -1, -1, -1, -1, 39, 40, -1, 41, 42, 43,
+             0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 44, -1, -1, -1, -1, -1,
+            -1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+        )
+\end{DoxyCode}
+\hypertarget{class_q_rinput_a737abdef83dabb219182c1e88887c6c3}{\index{Q\-Rinput@{Q\-Rinput}!\$items@{\$items}}
+\index{\$items@{\$items}!QRinput@{Q\-Rinput}}
+\subsubsection[{\$items}]{\setlength{\rightskip}{0pt plus 5cm}\$items}}\label{class_q_rinput_a737abdef83dabb219182c1e88887c6c3}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/wamp/www/vesey.\-atspace.\-eu/qr/\hyperlink{qrinput_8php}{qrinput.\-php}\end{DoxyCompactItemize}

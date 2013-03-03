@@ -1,0 +1,192 @@
+.TH "QRinput" 3 "Sun Mar 3 2013" "Version 0.001" "Count Me In" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QRinput \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fB__construct\fP ($version=0, $level=\fBQR_ECLEVEL_L\fP)"
+.br
+.ti -1c
+.RI "\fBgetVersion\fP ()"
+.br
+.ti -1c
+.RI "\fBsetVersion\fP ($version)"
+.br
+.ti -1c
+.RI "\fBgetErrorCorrectionLevel\fP ()"
+.br
+.ti -1c
+.RI "\fBsetErrorCorrectionLevel\fP ($level)"
+.br
+.ti -1c
+.RI "\fBappendEntry\fP (\fBQRinputItem\fP $entry)"
+.br
+.ti -1c
+.RI "\fBappend\fP ($mode, $size, $data)"
+.br
+.ti -1c
+.RI "\fBinsertStructuredAppendHeader\fP ($size, $index, $parity)"
+.br
+.ti -1c
+.RI "\fBcalcParity\fP ()"
+.br
+.ti -1c
+.RI "\fBestimateBitsModeKanji\fP ($size)"
+.br
+.ti -1c
+.RI "\fBestimateBitStreamSize\fP ($version)"
+.br
+.ti -1c
+.RI "\fBestimateVersion\fP ()"
+.br
+.ti -1c
+.RI "\fBcreateBitStream\fP ()"
+.br
+.ti -1c
+.RI "\fBconvertData\fP ()"
+.br
+.ti -1c
+.RI "\fBappendPaddingBit\fP (&$bstream)"
+.br
+.ti -1c
+.RI "\fBmergeBitStream\fP ()"
+.br
+.ti -1c
+.RI "\fBgetBitStream\fP ()"
+.br
+.ti -1c
+.RI "\fBgetByteStream\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBcheckModeNum\fP ($size, $data)"
+.br
+.ti -1c
+.RI "static \fBestimateBitsModeNum\fP ($size)"
+.br
+.ti -1c
+.RI "static \fBlookAnTable\fP ($c)"
+.br
+.ti -1c
+.RI "static \fBcheckModeAn\fP ($size, $data)"
+.br
+.ti -1c
+.RI "static \fBestimateBitsModeAn\fP ($size)"
+.br
+.ti -1c
+.RI "static \fBestimateBitsMode8\fP ($size)"
+.br
+.ti -1c
+.RI "static \fBcheckModeKanji\fP ($size, $data)"
+.br
+.ti -1c
+.RI "static \fBcheck\fP ($mode, $size, $data)"
+.br
+.ti -1c
+.RI "static \fBlengthOfCode\fP ($mode, $version, $bits)"
+.br
+.in -1c
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fB$items\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fB$anTable\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "__construct ($version = \fC0\fP, $level = \fC\fBQR_ECLEVEL_L\fP\fP)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "append ($mode, $size, $data)"
+
+.SS "appendEntry (\fBQRinputItem\fP$entry)"
+
+.SS "appendPaddingBit (&$bstream)"
+
+.SS "calcParity ()"
+
+.SS "static check ($mode, $size, $data)\fC [static]\fP"
+
+.SS "static checkModeAn ($size, $data)\fC [static]\fP"
+
+.SS "static checkModeKanji ($size, $data)\fC [static]\fP"
+
+.SS "static checkModeNum ($size, $data)\fC [static]\fP"
+
+.SS "convertData ()"
+
+.SS "createBitStream ()"
+
+.SS "static estimateBitsMode8 ($size)\fC [static]\fP"
+
+.SS "static estimateBitsModeAn ($size)\fC [static]\fP"
+
+.SS "estimateBitsModeKanji ($size)"
+
+.SS "static estimateBitsModeNum ($size)\fC [static]\fP"
+
+.SS "estimateBitStreamSize ($version)"
+
+.SS "estimateVersion ()"
+
+.SS "getBitStream ()"
+
+.SS "getByteStream ()"
+
+.SS "getErrorCorrectionLevel ()"
+
+.SS "getVersion ()"
+
+.SS "insertStructuredAppendHeader ($size, $index, $parity)"
+
+.SS "static lengthOfCode ($mode, $version, $bits)\fC [static]\fP"
+
+.SS "static lookAnTable ($c)\fC [static]\fP"
+
+.SS "mergeBitStream ()"
+
+.SS "setErrorCorrectionLevel ($level)"
+
+.SS "setVersion ($version)"
+
+.SH "Field Documentation"
+.PP 
+.SS "$anTable\fC [static]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= array(
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            36, -1, -1, -1, 37, 38, -1, -1, -1, -1, 39, 40, -1, 41, 42, 43,
+             0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 44, -1, -1, -1, -1, -1,
+            -1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+        )
+.fi
+.SS "$items"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Count Me In from the source code\&.

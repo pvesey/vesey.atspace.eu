@@ -1,0 +1,59 @@
+.TH "C:/wamp/www/vesey.atspace.eu/lib/showQR.php" 3 "Sun Mar 3 2013" "Version 0.001" "Count Me In" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+C:/wamp/www/vesey.atspace.eu/lib/showQR.php \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "if(isset($_GET['p'])) if(isset($_GET['q'])) 
+.br
+if(isset($_GET['r'])) \fB$today\fP = date('Y-m-d')"
+.br
+.ti -1c
+.RI "\fB$classStart\fP = $today \&. ' ' \&. $classStart \&. ':00:00'"
+.br
+.ti -1c
+.RI "\fB$classEnd\fP = $today \&. ' ' \&. $classEnd \&. ':00:00'"
+.br
+.ti -1c
+.RI "\fB$timestamp\fP = md5(time())"
+.br
+.ti -1c
+.RI "\fB$db\fP = new \fBatadmin\fP()"
+.br
+.ti -1c
+.RI "\fB$qr\fP = new \fBqr\fP()"
+.br
+.ti -1c
+.RI "\fB$classID\fP = $\fBdb\fP->getClassID($timestamp)"
+.br
+.ti -1c
+.RI "\fB$qrImageFile\fP = $timestamp \&. DIRECTORY_SEPARATOR \&. $timestamp \&. '\&.png'"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "$classEnd = $today \&. ' ' \&. $classEnd \&. ':00:00'"
+
+.SS "$classID = $\fBdb\fP->getClassID($timestamp)"
+
+.SS "$classStart = $today \&. ' ' \&. $classStart \&. ':00:00'"
+
+.SS "$\fBdb\fP = new \fBatadmin\fP()"
+
+.SS "$\fBqr\fP = new \fBqr\fP()"
+
+.SS "$qrImageFile = $timestamp \&. DIRECTORY_SEPARATOR \&. $timestamp \&. '\&.png'"
+
+.SS "$timestamp = md5(time())"
+
+.SS "if (isset($_GET['p'])) if (isset($_GET['q'])) if (isset($_GET['r'])) $today = date('Y-m-d')"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Count Me In from the source code\&.

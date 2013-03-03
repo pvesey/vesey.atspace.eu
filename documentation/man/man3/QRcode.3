@@ -1,0 +1,78 @@
+.TH "QRcode" 3 "Sun Mar 3 2013" "Version 0.001" "Count Me In" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QRcode \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBencodeMask\fP (\fBQRinput\fP $input, $mask)"
+.br
+.ti -1c
+.RI "\fBencodeInput\fP (\fBQRinput\fP $input)"
+.br
+.ti -1c
+.RI "\fBencodeString8bit\fP ($string, $version, $level)"
+.br
+.ti -1c
+.RI "\fBencodeString\fP ($string, $version, $level, $hint, $casesensitive)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBpng\fP ($\fBtext\fP, $outfile=false, $level=\fBQR_ECLEVEL_L\fP, $size=3, $margin=4, $saveandprint=false)"
+.br
+.ti -1c
+.RI "static \fBtext\fP ($text, $outfile=false, $level=\fBQR_ECLEVEL_L\fP, $size=3, $margin=4)"
+.br
+.ti -1c
+.RI "static \fBraw\fP ($\fBtext\fP, $outfile=false, $level=\fBQR_ECLEVEL_L\fP, $size=3, $margin=4)"
+.br
+.in -1c
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fB$version\fP"
+.br
+.ti -1c
+.RI "\fB$width\fP"
+.br
+.ti -1c
+.RI "\fB$data\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "encodeInput (\fBQRinput\fP$input)"
+
+.SS "encodeMask (\fBQRinput\fP$input, $mask)"
+
+.SS "encodeString ($string, $version, $level, $hint, $casesensitive)"
+
+.SS "encodeString8bit ($string, $version, $level)"
+
+.SS "static png ($text, $outfile = \fCfalse\fP, $level = \fC\fBQR_ECLEVEL_L\fP\fP, $size = \fC3\fP, $margin = \fC4\fP, $saveandprint = \fCfalse\fP)\fC [static]\fP"
+
+.SS "static raw ($text, $outfile = \fCfalse\fP, $level = \fC\fBQR_ECLEVEL_L\fP\fP, $size = \fC3\fP, $margin = \fC4\fP)\fC [static]\fP"
+
+.SS "static text ($text, $outfile = \fCfalse\fP, $level = \fC\fBQR_ECLEVEL_L\fP\fP, $size = \fC3\fP, $margin = \fC4\fP)\fC [static]\fP"
+
+.SH "Field Documentation"
+.PP 
+.SS "$data"
+
+.SS "$version"
+
+.SS "$width"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Count Me In from the source code\&.
