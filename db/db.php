@@ -2,24 +2,17 @@
 
 class db{
 
-  //const dbcon = new mysqli("localhost", "cmi", "cmipass", "cmi");;
-  
   protected $_dcon = "";
   
   function condb(){
     try{
-    //$dbcon = new mysqli("localhost", "cmi", "cmipass", "cmi");
-      $dbcon = new PDO('mysql:host=localhost;dbname=1293294_cmi', "1293294_cmi", "cmipass");
-      //$dbcon = new PDO('mysql:host=fdb5.atspace.com;dbname=1293294_cmi', "1293294_cmi", "cmipass");
+     // $dbcon = new PDO('mysql:host=localhost;dbname=1293294_cmi', "1293294_cmi", "cmipass");
+     $dbcon = new PDO('mysql:host=fdb5.atspace.com;dbname=1293294_cmi', "1293294_cmi", "cmipass");
       
       $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);      
       $this->_dcon = $dbcon;
 
     
-    //  if ($dbcon->connect_errno) {
-      //    echo "Failed to connect to MySQL: (" . $dbcon->connect_errno . ") " . $dbcon->connect_error;
-    //  }
-    //  echo $dbcon->host_info . "\n";
       }
     catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
@@ -29,8 +22,7 @@ class db{
 
   
   function closedb(){
-    
-    //$this->_dcon->close();
+
     $this->_dcon = null;
     
   }
@@ -68,11 +60,11 @@ class db{
           $_SESSION["SESS_USERNAME"] = $username;
           $_SESSION["SESS_USERFNAME"] = $row['txtFirstName'];;
           $_SESSION["SESS_USERSNAME"] = $row['txtSurname'];;
-          
+          $_SESSION["SESS_FAIL"] = "";
         }
                         
         else{
-          //echo "Username or Pasword incorrect";
+          $_SESSION["SESS_FAIL"] = "Username or Password Incorrect";
         }
         
         $stmt->closeCursor();
@@ -97,7 +89,6 @@ class db{
     if ($this->_dcon != ""){
         
       try{
-    
         $stmt = $this->_dcon->prepare("CALL procLogin(:uname, :pass);");
         $stmt->bindParam(':uname', $username);
         $stmt->bindParam(':pass', $password);
@@ -107,36 +98,41 @@ class db{
     
         if ($stmt->rowCount() == 1){
           // insert attendance record into DB here
-          
           $user = $row['intUserID'];
           
           $stmt->closeCursor();
           
-          $atnd = $this->_dcon->prepare("CALL procLogAttend(:class, :user);");
-          //$atnd = $this->_dcon->prepare("CALL qrattend(1, 1, 1, 1);");
+          $atnd = $this->_dcon->prepare("CALL procLogAttend(:user, :class);");
             
           $atnd->bindParam(':class', $class, PDO::PARAM_INT);
           $atnd->bindParam(':user', $user, PDO::PARAM_INT);
           $atnd->execute();
           $atnd->closeCursor();
+          return 1;
         }
       
         else{
-          // echo "Username or Password incorrect";
+          return 2;
         }
         //$stmt->closeCursor();
     
       }
       catch (PDOException $e) {
-        print "Error!: " . $e->getMessage() . "<br/>";
+
+        if ($e->getCode()==23000){
+            //echo "YOU HAVE ALREADY LOGGED YOUR ATTEND";
+            return 3;
+        } else {
+            //print "Error!: " . $e->getMessage() . "<br/>";
+        }
         die();
+        return 4;
       }
     }
     
     else {
-        
-      echo "no connection to datbase";
-        
+      //echo "no connection to datbase";
+      return 4;  
     }
     
     
@@ -167,7 +163,6 @@ class db{
     } else {
       $username = "";
     }
-    echo $username;
     return $username;
   }
   
@@ -194,7 +189,6 @@ class db{
     } else {
       $password = "";
     }
-    echo $password;
     return $password;
   }
 
@@ -207,13 +201,15 @@ class db{
         $stmt = $this->_dcon->prepare("CALL procUserCourses(:uname);");
         $stmt->bindParam(':uname', $_SESSION["SESS_ID"]);
         $stmt->execute();
+      
+        $output = "<div class='nav' onClick='goHome()'>Home</div>";
 
         if ($stmt->rowCount() > 0){
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-              echo "<div class='nav' id='". $row['intModule']. "' onClick='getCourseInfo(" .$row['intModule'] .")'>" . $row['txtModuleName']. "</div>";
+              $output .= "<div class='nav' id='". $row['intModule']. "' onClick='getCourseInfo(" .$row['intModule'] .")'>" . $row['txtModuleName']. "</div>";
 
           }
-            
+          echo $output;            
         }
     
         else{
@@ -238,6 +234,87 @@ class db{
     
   }
   
+    
+  function getStuOverallAttend(){
+      
+    if ($this->_dcon != ""){
+        
+      try{
+
+        $stmt = $this->_dcon->prepare("CALL procStuOverallAttend(:uname);");
+        $stmt->bindParam(':uname', $_SESSION["SESS_ID"]);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0){
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              $output = "<div class='stuAttendRecord'><div class='' id='". $row['fkeyModule']. "' onClick='getCourseInfo(" .$row['fkeyModule'] .")'>"; 
+              $output .=  "<div class='stuModName'>" . $row['txtModuleName'] . "</div>"; 
+              $output .=  "<div class='stuModAverage'>" . $row['Average'] . "</div>";
+              $output .= "</div></div>"; 
+              echo $output;
+          }
+            
+        }
+    
+        else{
+          echo "No attendance records found for User " . $_SESSION["SESS_USERNAME"]; 
+        }
+        $stmt->closeCursor();
+    
+      }
+      catch (PDOException $e) {
+        print "Error!: " . $e->getMessage() . "<br/>";
+        die();
+      }
+    }
+    
+    else {
+        
+      echo "no connection to datbase";
+        
+    }    
+      
+  }
+  
+  
+    function getLectStuAttend($studentID, $module){
+      
+    if ($this->_dcon != ""){
+
+      try{
+    
+        $stmt = $this->_dcon->prepare("CALL procStuAttendRpt(:uname, :module);");
+        $stmt->bindParam(':uname', $studentID);
+        $stmt->bindParam(':module', $module);
+        $stmt->execute();
+    
+        if ($stmt->rowCount() > 0){
+          $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+          return $rows;
+        }
+    
+        else{
+          echo "No Attendance found";
+        }
+    
+        $stmt->closeCursor();
+    
+      }
+      catch (PDOException $e) {
+        print "Error!: " . $e->getMessage() . "<br/>";
+        die();
+      }
+    }
+    
+    else {
+    
+      echo "no connection to datbase";
+    
+    }
+    
+    
+  }
+  
   function getModAttend($module){
     
     if ($this->_dcon != ""){
@@ -251,7 +328,6 @@ class db{
     
         if ($stmt->rowCount() > 0){
           $rows = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-          //var_dump($rows);
           return $rows;
         }
     
@@ -360,7 +436,7 @@ class db{
   
       try{
   
-        $stmt = $this->_dcon->prepare("CALL procOverallAttendRpt(:module);");
+        $stmt = $this->_dcon->prepare("CALL procShowQuickAttend(:module);");
         $stmt->bindParam(':module', $module);
         $stmt->execute();
   
@@ -391,11 +467,6 @@ class db{
   
   
   }
-  
-  
-  
-  
-  
   
 }  // end of class
 

@@ -37,6 +37,16 @@ body {
   padding: 5px;
 }
 
+#wrapper #mainContent #loginMSG{
+        padding: 20px;
+        padding-left: 40px;
+        color: #FF0000;
+        font-weight: bold;
+}
+
+
+
+
 #wrapper #Top #siteTitle {
   font-family: Verdana, Arial, Helvetica;
   font-size: 50px;

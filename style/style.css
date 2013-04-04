@@ -28,50 +28,13 @@ body {
 	float: left;
 	clear: both;
 }
-#wrapper #leftSide li {
-	clear: both;
-	list-style-type: none;
-	padding-top: 1px;
-	padding-right: 1px;
-	padding-bottom: 1px;
-	padding-left: 10px;
-	color: #ffffff;
-	font-weight: bold;
-}
-#wrapper #Top #topNav #buttonContainer {
-	float: right;
-	margin-right: 10px;
-}
-#wrapper #Top #topNav #buttonContainer li {
-	list-style-type: none;
-	display: inline;
-	background-color: #6699FF;
-	text-align: center;
-	cursor: pointer;
-	font-weight: bold;
-	border: 1px solid rgba(0,0,0,1);
-	border-radius: 5px;
-	padding-top: 5px;
-	padding-right: 10px;
-	padding-bottom: 5px;
-	padding-left: 10px;
-	color: #ffffff;
-}
-#wrapper #Top #topNav #buttonContainer li:hover {
-	background-color: #A60000;
-	color: #ffffff;
-
-}
-
-
-
-#wrapper #leftSide li:hover {
-	cursor: pointer;
-	background-color: #003399;
-}
 
 .nav {
 	background-color: #6699FF;
+        padding-bottom: 3px;
+        padding-top: 1px;
+        padding-left: 10px;
+        padding-right: 2px;
 }
 
 .nav:hover {
@@ -87,19 +50,13 @@ body {
 	height: 700px;
 	overflow: auto;
 }
-#xmlcourses #ajaxLoader {
-	margin-top: 50px;
-	margin-left: 280px;
-}
-#xmlcourses {
-
-}
 
 
 .ajaxLoader{
 	margin-left: auto;
 	margin-right: auto;
-	
+	padding: 30px;
+        width: 64px;
 	
 }
 
@@ -137,6 +94,41 @@ body {
 	padding: 5px;	
 }
 
+.QRimage{
+        margin-left: auto;
+        margin-right: auto;
+	width: 600px;
+ 	padding: 5px;       
+        padding-top: 0px;
+}
+
+.QRimage img{
+	width: 500px;
+}
+
+.fullScreenQR{
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 600px;
+        text-align: center;
+        font-size: 20px;
+        color: #000000;
+    	background-color: #6699FF;
+    
+}
+
+.fullScreenQR :hover{
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 600px;
+        text-align: center;
+        font-size: 20px;
+    	background-color: #A60000;
+}
+
+
 
 .newQRButton{
 	display: inline-block;
@@ -144,32 +136,76 @@ body {
 	padding: 5px;	
 }
 
-
-.courseTop {
-	height: 36px;
-	color: #FFFFFF;
-	background-color: #6699FF;
-	border-radius: 8px;
+.lectRptUsername{
+ 	display: inline-block;
+        width: 200px;
+        padding: 1px;
 }
 
-.courseMiddle {
-	height: 110px;
-	display: inline-block;
-	width: auto;
+.lectRptName{
+  	display: inline-block;  
+        width: 200px;
+        padding: 1px;        
 }
 
-.courseFootUpper {
-	height: 20px;
+.lectRptAverage{
+ 	display: inline-block;
+        width: 200px;
+        text-align: right;
+        padding: 1px;    
+}
+.TlectRptUsername{
+ 	display: inline-block;
+        width: 200px;
+        padding: 1px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        font-size: 20px;
 }
 
-.courseFootLower {
-	height: 30px;
-	color: #FFFFFF;
-	background-color: #6699FF;
-	border-bottom-width: 2px;
-	border-bottom-style: solid;
-	border-bottom-color: #FFFFFF;
+.TlectRptName{
+  	display: inline-block;  
+        width: 200px;
+        padding: 1px;        
+        padding-top: 2px;
+        padding-bottom: 2px;
+        font-size: 20px;
 }
+
+.TlectRptAverage{
+ 	display: inline-block;
+        width: 200px;
+        text-align: right;
+        padding: 1px;    
+        padding-top: 2px;
+        padding-bottom: 2px;
+        font-size: 20px;
+}
+
+.stuAttendRecord {
+        background-color: #FFFFFF;
+        width: 700px; 
+}
+
+.stuAttendRecord :hover{
+    	cursor: pointer;
+        background-color: #A60000;
+}
+
+
+.stuModName{
+  	display: inline-block;  
+        width: 350px;
+        padding: 1px;        
+}
+
+.stuModAverage{
+ 	display: inline-block;
+        width: 150px;
+        text-align: right;
+        padding: 1px;    
+}
+
 
 
 
@@ -195,13 +231,6 @@ h1 {
 	padding-bottom: 5px;
 	padding-left: 10px;
 	color: #003399;
-}
-
-.ParticipantProfile {
-	display: inline-block;
-	width: 250px;
-	height: 20px;
-	padding-left: 10px;
 }
 
 #footer #footLeft {

@@ -2,6 +2,30 @@
 include "../db/atadmin.php";
 include "../qr/qr.php";
 
+function createHTML($location){
+    // Simple function to create a HTML file for full code display
+    
+   $contents =   "<!doctype html>";
+   $contents .=  "<html>";
+   $contents .=  "	<head>";
+   $contents .=  "		<title>QR Attend</title>";
+   $contents .=  "		<meta charset='utf-8' />";
+   $contents .=  "		<link rel='stylesheet' href='qrstyle.css' />";		
+   $contents .=  "	</head>";
+   $contents .=  "	<body><div class='mainFQR'>";    
+   $contents .=  "          <h1>Scan Code below:</h1>";
+   $contents .=  "          <img src='". $location.".png" . "'/>";
+   $contents .=  "	</div></body>";
+   $contents .=  "</html>";
+    
+   $file = $location . DIRECTORY_SEPARATOR . $location . ".html";
+ 
+   file_put_contents($file, $contents);	
+   return $file;
+}
+
+
+
 if (isset ($_GET["p"])) {
 	$ModID = trim(htmlentities($_GET['p']));
 }
@@ -21,7 +45,7 @@ $today = date("Y-m-d");
 $classStart = $today . " " . $classStart . ":00:00";
 $classEnd = $today . " " . $classEnd . ":00:00";
 
-$timestamp = md5(time());
+$timestamp = trim(md5(time()));
 
 $db = new atadmin();
 $qr = new qr();
@@ -41,9 +65,12 @@ $qr->makeQRCode($timestamp);
 
 $qrImageFile = $timestamp . DIRECTORY_SEPARATOR . $timestamp . ".png";
 
-echo '<img src="'. $qrImageFile . '"/>';
+$qrhtml = createHTML($timestamp);
 
-//$qr->distroyqr($timestamp);
+$output = "<div class='fullScreenQR'><a href=" . $qrhtml . " target = _blank>Show Full Screen</a></div>";
+$output .=  "<div id='QRName' class='QRName'>$timestamp</div>";
+$output .=  "<div class='QRimage'><img src='". $qrImageFile . "'/></div>";
 
+echo $output;
 
 ?>

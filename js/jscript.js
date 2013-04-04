@@ -3,27 +3,32 @@ window.onload = initAll;
 var ajaxMyCourse = false;
 var ajaxMyAttend = false;
 var ajaxShowQR = false;
+var ajaxShowStudentAttend = false;
+var ajaxDestroyQR = false;
 var dataArray = new Array();
 var url = 'lib/courses.php';
 var MyCourseurl = 'mycourses.php';
-var currentCourse = 0;
-
-
 
 function initAll() {
-	console.log("initAll");
-	
+
 	if (window.XMLHttpRequest) {
-		//xhr = new XMLHttpRequest();
 		ajaxMyAttend = new XMLHttpRequest();
 		ajaxShowQR = new  XMLHttpRequest();
+                ajaxShowStudentAttend = new XMLHttpRequest();
+                ajaxDestroyQR = new XMLHttpRequest();
 	}
 	else {
 		if (window.ActiveXObject) {
 			try {
-				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				ajaxMyAttend = new ActiveXObject("Microsoft.XMLHTTP");
+                                ajaxShowQR = new ActiveXObject("Microsoft.XMLHTTP");
+                                ajaxShowStudentAttend = new ActiveXObject("Microsoft.XMLHTTP");
+                                ajaxDestroyQR = new ActiveXObject("Microsoft.XMLHTTP");
 			}
-			catch (e) { }
+			catch (e) { 
+                            console.log("Problem with Internet Explorer");
+                    
+                        }
 		}
 	}
 
@@ -35,8 +40,12 @@ function initAll() {
 		ajaxShowQR.onreadystatechange = showQRCode;
 	}
 	
-	
-	
+	if (ajaxShowStudentAttend) {
+		ajaxShowStudentAttend.onreadystatechange = showStudentAttend;
+	}	
+        if (ajaxDestroyQR) {
+		ajaxDestroyQR.onreadystatechange = showDeleteQRCode;
+	}
 	
 	
 	else {
@@ -45,31 +54,72 @@ function initAll() {
 
 }
 
+function setLiveCourse(x){
+    this.liveCourse = x;
+}
+
+function getLiveCourse(){
+    return this.liveCourse;    
+}
+
+
+function getIndStudentAttend(obj){
+
+	currentCourse = obj;
+	ajaxShowStudentAttend.open("GET","lib/stuattend.php?q="+ obj + "&r=" + this.getLiveCourse(),true);
+	ajaxShowStudentAttend.send();
+	
+}
+
 
 function getCourseInfo(obj){
 	
-	console.log(obj);
+        setLiveCourse(obj);
 	currentCourse = obj;
-	//objText = obj.innerHTML;
 	ajaxMyAttend.open("GET","lib/courses.php?q="+ obj,true);
 	ajaxMyAttend.send();
 	
 }
 
-//function runClicked(obj) {
+function destroyQR(){
+        var QRDelete = "lib/deleteQR.php?p=" + QR;
+	ajaxDestroyQR.open("GET",QRDelete ,true);
+	ajaxDestroyQR.send();
+}
 
-//	objText = obj.innerHTML;
-//	xmlCourse.open("GET","courses.php?q="+ objText,true);
-//	xmlCourse.send();
 
-//}
 
-//function courseClicked(obj) {
 
-//	objText = obj.innerHTML;
-//	console.log(obj.innerHTML);
-//}
+function showStudentAttend() {
+	document.getElementById("mainContent").innerHTML = "<img class='ajaxLoader' src='img/icon/loaderB64.gif'>";
+	var outXML = "";
+	var outHTML = "";
+        if (ajaxShowStudentAttend.readyState == 4) {
+		if (ajaxShowStudentAttend.status == 200) {
+			outXML = ajaxShowStudentAttend.responseXML;
+			if (!outXML){
+				console.log("Nothing Returned in XML");
+			}
+			
+		}
+		else {
+			outHTML = "There was a problem with the request " + ajaxShowStudentAttend.status;
+		}
+		
+		if (outXML.documentElement.nodeName == "Module"){
+                                        outHTML = tutorAdminButtons();
+					outHTML += formatStuAttend(outXML);
+			
+		}else if (outXML.documentElement.nodeName == "Overall") {
 
+					outHTML = formatTutorAttend(outXML);
+		}
+		
+				
+		document.getElementById("mainContent").innerHTML = outHTML;
+		
+	}
+}
 
 
 
@@ -80,7 +130,6 @@ function showMyAttend() {
 	if (ajaxMyAttend.readyState == 4) {
 		if (ajaxMyAttend.status == 200) {
 			outXML = ajaxMyAttend.responseXML;
-			console.log("XML BACK");
 			if (!outXML){
 				console.log("Nothing Returned in XML");
 			}
@@ -97,7 +146,7 @@ function showMyAttend() {
 		}else if (outXML.documentElement.nodeName == "Overall") {
 
 					outHTML = formatTutorAttend(outXML);
-		};
+		}
 		
 				
 		document.getElementById("mainContent").innerHTML = outHTML;
@@ -110,17 +159,17 @@ function showMyAttend() {
 function formatStuAttend(xmlIn){
 
 
-	xmlDoc = xmlIn.getElementsByTagName("Class");
+	var xmlDoc = xmlIn.getElementsByTagName("Class");
 	
-	numnodes = xmlDoc.length;
+	var numnodes = xmlDoc.length;
 	
-	classStart =  xmlIn.getElementsByTagName("dateClassStart");
-	classAttend = xmlIn.getElementsByTagName("bAttend");
-	classReason = xmlIn.getElementsByTagName("txtReason");
+	var classStart =  xmlIn.getElementsByTagName("dateClassStart");
+	var classAttend = xmlIn.getElementsByTagName("bAttend");
+	var classReason = xmlIn.getElementsByTagName("txtReason");
 
 
 
-	output ="";
+	var output ="";
 	output += "<div class='classAttend'>";
 	output +=  "<div class='classDate'>Class Date & Time</div>";
 	output +=  "<div class='classAttended'>Attendance</div>";
@@ -151,54 +200,43 @@ function formatStuAttend(xmlIn){
 
 function formatTutorAttend(xmlIn){
 
-	xmlDoc = xmlIn.getElementsByTagName("Class");
+	var xmlDoc = xmlIn.getElementsByTagName("Class");
 	
-	numnodes = xmlDoc.length;
+	var numnodes = xmlDoc.length;
 	
-	classStart =  xmlIn.getElementsByTagName("dateClassStart");
-	classAttend = xmlIn.getElementsByTagName("bAttend");
-	classUserID = xmlIn.getElementsByTagName("fkeyUserID");
+	var txtUsername =  xmlIn.getElementsByTagName("txtUsername");
+	var txtFirstname = xmlIn.getElementsByTagName("txtFirstname"); 
+        var txtSurname =xmlIn.getElementsByTagName("txtSurname");
+	var dblAverage = xmlIn.getElementsByTagName("Average");
+	var userID = xmlIn.getElementsByTagName("fkeyUserID");
 
-	output = tutorAdminButtons();
+	var output = tutorAdminButtons();
 	
-	output += "<div class='classAttend'>";
-	output +=  "<div class='classDate'>Class Date & Time</div>";
-	output +=  "<div class='classAttended'>User ID</div>";
-	output +=  "<div class='classReason'>Attendance<br></div>";
-	
-	
-	
+	output += "<div><div class='classAttend'>";
+	output +=  "<div class='TlectRptUsername'>Username</div>";
+	output +=  "<div class='TlectRptName'>Student</div>";
+	output +=  "<div class='TlectRptAverage'>Average<br></div></div>";	
 	
 	for (var i = 0 ; i < numnodes ; i ++){
-
-
-		output +=  "<div class='classDate'>";
-			output +=  classStart[i].textContent;
+                output += "<div id='"+ userID[i].textContent + "' onClick='getIndStudentAttend("+ userID[i].textContent +")'";
+                output += "onMouseOver=this.style.backgroundColor='#A60000';this.style.cursor='pointer' onMouseOut=this.style.backgroundColor='#FFFFFF'>";
+                output +=  "<div class='lectRptUsername'>";
+			output +=  txtUsername[i].textContent;
 		output +=  "</div>";
-		output +=  "<div class='classUserID'>";
-			output +=  classUserID[i].textContent;
+		output +=  "<div class='lectRptName'>";
+			output +=  txtFirstname[i].textContent;
+			output +=  " ";
+			output +=  txtSurname[i].textContent;
 		output +=  "</div>";		
-		output +=  "<div class='classAttended'>";
-			output +=  classAttend[i].textContent;
+		output +=  "<div class='lectRptAverage'>";
+			output +=  dblAverage[i].textContent;
 		output +=  "</div>";
-
+                output +=  "</div>";
 	}
 	output += "</div>";
+
 	return output;
 }
-
-
-function newQR(id){
-	
-	console.log("newQR Clicked");
-	console.log(id);
-	window.location="testindex.php";
-		
-	//document.getElementById("mainContent").innerHTML = testindex.php;
-	
-}
-
-
 
 function goHome(){
 	window.location.href = 'index.php';
@@ -206,26 +244,24 @@ function goHome(){
 
 function tutorAdminButtons(){
 	
-	courseID = currentCourse;
+	var courseID = currentCourse;
 	
-	output ="";
+	var output ="";
 	output += "<h1>Class Administration Area</h1>";
 	
-	output += "<div class='newQRButton' onClick='createQRCode("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>Take Attend Now</div>";
-	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>Redisplay Prev</div>";
-	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>View Averages</div>";
-	output += "<div class='newQRButton' onClick='createQRCode("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>Better Version</div>";
-	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
-	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
+	output += "<div class='newQRButton' onClick='createQRCode("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000';this.style.cursor='pointer' onMouseOut=this.style.backgroundColor='#FFFFFF'>Take Attend Now</div>";
+	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000';this.style.cursor='pointer' onMouseOut=this.style.backgroundColor='#FFFFFF'>Redisplay Prev</div>";
+	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000';this.style.cursor='pointer' onMouseOut=this.style.backgroundColor='#FFFFFF'>View Averages</div>";
+	output += "<div class='newQRButton' onClick='createQRCode("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000';this.style.cursor='pointer' onMouseOut=this.style.backgroundColor='#FFFFFF'>Better Version</div>";
+	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000';this.style.cursor='pointer' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
+	output += "<div class='newQRButton' onClick='newQR("+ courseID + ") 'onMouseOver=this.style.backgroundColor='#A60000';this.style.cursor='pointer' onMouseOut=this.style.backgroundColor='#FFFFFF'>CREATE NEW CODE</div>";
 	
 	
 	return output;
 }
 
 function createQRCode(courseID){
-	
-	console.log(courseID);
-	
+
 	var date = new Date();
 
 	var month = String(date.getMonth() +1);
@@ -240,61 +276,117 @@ function createQRCode(courseID){
 	
 	var startHour = String(date.getHours());
 	var endHour = String(date.getHours() + 1);
-	
-//	var classStart = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ startHour + ':00:00"';
-//	var classFinish = '"' + date.getFullYear() + "-" + month + "-"+ day + " "+ endHour + ':00:00"';
 
-	var classStart = startHour;
+        var classStart = startHour;
 	var classFinish = endHour;
-	
-	
-	
-	outHTML = "<h1>Content Cleared</h1>";
+
+        
+	var outHTML = "<h1>Content Cleared</h1>";
 	
 	document.getElementById("mainContent").innerHTML = outHTML;
 	
 	var QRrun = "lib/showQR.php?p=" + currentCourse +  "&q=" + classStart + "&r=" + classFinish;
-	
-	console.log(QRrun);
-//	currentCourse = obj;
-	//objText = obj.innerHTML;
+
 	ajaxShowQR.open("GET",QRrun,true);
 	ajaxShowQR.send();
-	
-	
-	
-	
+
 }
 
 
 function showQRCode() {
 	document.getElementById("mainContent").innerHTML = "<img class='ajaxLoader' src='img/icon/loaderB64.gif'>";
 	var outXML = "";
-	var outHTML = "";
+	var outHTML = tutorAdminButtons();
 	if (ajaxShowQR.readyState == 4) {
 		if (ajaxShowQR.status == 200) {
-			outXML = ajaxShowQR.responseText;
-			console.log("TEXT BACK");
+                        outXML = ajaxShowQR.responseText;
 			if (!outXML){
 				console.log("Nothing Returned in TXT");
 			}
 			
 		}
 		else {
-			outHTML = "There was a problem with the request " + ajaxShowQR.status;
+			outHTML += "There was a problem with the request " + ajaxShowQR.status;
 		}
 		
-		outHTML = outXML;
+		outHTML += outXML;
 				
 		document.getElementById("mainContent").innerHTML = outHTML;
-		
+		setQRName();
+               var QRListen = document.getElementById("QRName");
+               
+               if (QRListen.addEventListener){
+                    QRListen.addEventListener('mouseover', hoverStyle, true);
+                    QRListen.addEventListener('mouseout', normalStyle, true);                
+                    QRListen.addEventListener('click', destroyQR, false);                 
+               } else if (QRListen.attachEvent){
+                    QRListen.attachEvent("onmouseover", hoverStyle);
+                    QRListen.attachEvent("onmouseout", normalStyle);                    
+                    QRListen.attachEvent("onclick", destroyQR);  
+               }
+                              timer();
 	}
 }
 
+function showDeleteQRCode() {
+	var outXML = "";
+	var outHTML = tutorAdminButtons();
+	if (ajaxDestroyQR.readyState == 4) {
+		if (ajaxDestroyQR.status == 200) {
+                        outXML = ajaxDestroyQR.responseText;
+			if (!outXML){
+				console.log("Nothing Returned in TXT");
+			}
+		}
+		else {
+			outHTML += "There was a problem with the request " + ajaxDestroyQR.status;
+		}
+		outHTML += outXML;
+		document.getElementById("mainContent").innerHTML = outHTML;
 
+	}
 
+}
 
+function setQRName(){
+    QR = document.getElementById("QRName").innerHTML;
+}
 
+function hoverStyle(){
+        var doc = document.getElementById("QRName");
+        doc.style.backgroundColor = '#A60000';
+}
 
+function normalStyle(){
+        var doc = document.getElementById("QRName");
+        doc.style.backgroundColor = '#6699FF';
 
-console.log(".. END JAVASCRIPT LOAD");
+}
+
+function timer(){
+    
+    var counter = 1000;
+    console.log("IN TIMER");
+    //setInterval(function(){alert("Hello")},counter);
+    timercount = 15;
+    t = setInterval(displaytimer,counter);
+ 
+}
+
+function displaytimer(){
+    timercount--;    
+    if (timercount<=0 || (document.getElementById("QRName")== null)){
+        console.log("AutoDelete");
+        clearInterval(t);
+        destroyQR();
+    } else if (document.getElementById("QRName")== null){
+        clearInterval(t);
+    } else {
+    
+        var min = Math.floor(timercount/60);
+        var seconds = timercount%60;
+        if (seconds < 10){seconds = "0" + seconds.toString();}
+        var output = min + ":" + seconds;
+        var doc = document.getElementById("QRName").innerHTML = output;
+    }
+}
